@@ -187,6 +187,39 @@ Two optional enclosures:
 | [Back shell STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Back_V1.0.step) | 4-inch back |
 | [3.95-inch camera flip-case STEP](./docs/ESP32-P4C5-Module_Enclosure_3.95inch_CameraFlip180.step) | 3.95-inch camera, 180° flip case |
 
+### PoE Ethernet Adapter
+
+An optional 10/100BASE-TX Ethernet + PoE adapter board (V1.2). It plugs onto the dev board headers via a
+2×13P 2.54 mm female header, giving the ESP32-P4 RMII wired networking and letting a PoE switch power the
+board over the network cable.
+
+<p align="center"><img alt="PoE Ethernet adapter 3D render" src="./images/poe-adapter.png" width="600" /></p>
+
+| Item          | Specification                                                              |
+| ------------- | -------------------------------------------------------------------------- |
+| Ethernet PHY  | IP101GRI, 10/100BASE-TX, RMII, 25 MHz crystal                              |
+| Port          | RJ45 with Link / Speed LEDs                                                |
+| PoE PD        | TPS2378 (IEEE 802.3af PD) + XC7010 isolated flyback, +5 V out to the board |
+| PHY Power     | XC6206 LDO, +5 V → 3.3 V                                                   |
+| Board Size    | 72.00 × 52.00 mm, 4 mounting holes matching the dev board                  |
+| Connector     | 2×13P 2.54 mm female header                                                |
+
+RMII pin mapping (ESP32-P4 GPIO):
+
+| Signal   | GPIO | Signal  | GPIO | Signal     | GPIO |
+| -------- | ---- | ------- | ---- | ---------- | ---- |
+| RXD0     | 52   | TXD0    | 34   | 50M_CLK    | 50   |
+| RXD1     | 47   | TXD1    | 35   | MDC        | 53   |
+| CRS_DV   | 51   | TX_EN   | 33   | MDIO       | 49   |
+|          |      |         |      | PHY_RESET  | 36   |
+
+<p align="center"><img alt="PoE Ethernet adapter dimensions" src="./images/poe-adapter-dimensions.png" width="600" /></p>
+
+| File | Description |
+| ---- | ----------- |
+| [PoE Ethernet adapter schematic V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_Schematic_V1.2.pdf) | Schematic PDF |
+| [PoE Ethernet adapter STEP V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_V1.2.step) | PCBA 3D model |
+
 ### Schematic
 
 <p align="center"><img alt="ESP32-P4C5-Module Dev Board schematic" src="./images/schematic.jpg" width="900" /></p>
@@ -261,7 +294,7 @@ Steps:
 devboard-esp32p4c5_module/
 ├── README.md          # Chinese product docs
 ├── README_EN.md       # English product docs (this file)
-├── docs/              # User guide, schematic, enclosure STEP, camera/antenna files
+├── docs/              # User guide, schematic, enclosure STEP, PoE adapter, camera/antenna files
 ├── firmware/          # C5 wireless co-processor firmware (ESP-Hosted, flash C5 @ 0x0)
 └── images/            # Images used by the README
 ```
@@ -276,6 +309,8 @@ devboard-esp32p4c5_module/
 - [4-inch enclosure front STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Front_V1.0.step)
 - [4-inch enclosure back STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Back_V1.0.step)
 - [3.95-inch camera 180° flip-case STEP](./docs/ESP32-P4C5-Module_Enclosure_3.95inch_CameraFlip180.step)
+- [PoE Ethernet adapter schematic V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_Schematic_V1.2.pdf)
+- [PoE Ethernet adapter STEP V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_V1.2.step)
 - [C5 wireless co-processor firmware, ESP-Hosted v2.12.9 (C5 only, `0x0`)](./firmware/ESP32-C5_ESP-Hosted_v2.12.9_merged_0x0.bin)
 
 ### Peripheral Docs

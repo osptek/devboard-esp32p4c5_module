@@ -183,6 +183,38 @@ OSPTEK ESP32-P4C5-Module 开发板是一款以 **ESP32-P4C5 核心板** 为核�
 | [后壳 STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Back_V1.0.step) | 4inch 后壳 |
 | [3.95 英寸摄像头翻转壳 STEP](./docs/ESP32-P4C5-Module_Enclosure_3.95inch_CameraFlip180.step) | 3.95inch 摄像头 180° 翻转壳 |
 
+### 配套 PoE 以太网转接板
+
+可选的 10/100BASE-TX 以太网 + PoE 供电转接板（V1.2），通过 2×13P 2.54 mm 排母插在开发板排针上，
+为 ESP32-P4 提供 RMII 有线网络，并可由 PoE 交换机经网线直接供电。
+
+<p align="center"><img alt="PoE 以太网转接板 3D 渲染图" src="./images/poe-adapter.png" width="600" /></p>
+
+| 项目       | 规格                                                                  |
+| ---------- | --------------------------------------------------------------------- |
+| 以太网 PHY | IP101GRI，10/100BASE-TX，RMII 接口，25 MHz 晶振                       |
+| 网口       | RJ45（带 Link / Speed 指示灯）                                         |
+| PoE 受电   | TPS2378（IEEE 802.3af PD）+ XC7010 隔离反激，输出 +5 V 给开发板供电   |
+| PHY 电源   | XC6206 LDO，+5 V → 3.3 V                                              |
+| 板卡尺寸   | 72.00 × 52.00 mm，4 × 安装孔，与开发板孔位一致                        |
+| 连接器     | 2×13P 2.54 mm 排母                                                    |
+
+RMII 引脚分配（ESP32-P4 GPIO）：
+
+| 信号     | GPIO | 信号    | GPIO | 信号       | GPIO |
+| -------- | ---- | ------- | ---- | ---------- | ---- |
+| RXD0     | 52   | TXD0    | 34   | 50M_CLK    | 50   |
+| RXD1     | 47   | TXD1    | 35   | MDC        | 53   |
+| CRS_DV   | 51   | TX_EN   | 33   | MDIO       | 49   |
+|          |      |         |      | PHY_RESET  | 36   |
+
+<p align="center"><img alt="PoE 以太网转接板尺寸图" src="./images/poe-adapter-dimensions.png" width="600" /></p>
+
+| 文件 | 说明 |
+| ---- | ---- |
+| [PoE 以太网转接板原理图 V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_Schematic_V1.2.pdf) | 原理图 PDF |
+| [PoE 以太网转接板 STEP V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_V1.2.step) | PCBA 3D 模型 |
+
 ### 原理图
 
 <p align="center"><img alt="ESP32-P4C5-Module 开发板原理图" src="./images/schematic.jpg" width="900" /></p>
@@ -256,7 +288,7 @@ P4 端应用再通过 `esp_wifi_remote` + `esp_hosted` 组件使用无线功能�
 devboard-esp32p4c5_module/
 ├── README.md          # 产品说明（本文档）
 ├── README_EN.md       # 英文说明
-├── docs/              # 使用指南、原理图、外壳 STEP、摄像头/天线等资料
+├── docs/              # 使用指南、原理图、外壳 STEP、PoE 转接板、摄像头/天线等资料
 ├── firmware/          # C5 无线协处理器固件（ESP-Hosted，烧 C5 · 0x0）
 └── images/            # README 及文档使用的图片
 ```
@@ -271,6 +303,8 @@ devboard-esp32p4c5_module/
 - [4 英寸外壳前壳 STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Front_V1.0.step)
 - [4 英寸外壳后壳 STEP V1.0](./docs/ESP32-P4C5-Module_Enclosure_4inch_Back_V1.0.step)
 - [3.95 英寸摄像头 180° 翻转壳 STEP](./docs/ESP32-P4C5-Module_Enclosure_3.95inch_CameraFlip180.step)
+- [PoE 以太网转接板原理图 V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_Schematic_V1.2.pdf)
+- [PoE 以太网转接板 STEP V1.2](./docs/ESP32-P4C5-Module_PoE-Ethernet-Adapter_V1.2.step)
 - [C5 无线协处理器固件 ESP-Hosted v2.12.9（仅烧 C5 · `0x0`）](./firmware/ESP32-C5_ESP-Hosted_v2.12.9_merged_0x0.bin)
 
 ### 配套外设资料
